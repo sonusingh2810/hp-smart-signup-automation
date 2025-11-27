@@ -37,7 +37,7 @@ def accept_alert_if_present(driver, timeout=5):
 
 
 # -------------------------------------------------------------
-#  REALISTIC NAME GENERATOR (OPTION 2)
+#  REALISTIC NAME GENERATOR
 # -------------------------------------------------------------
 FIRST_NAMES = [
     "John", "Alice", "David", "Sophia", "Liam", "Emma", "Noah", "Ava",
@@ -66,6 +66,9 @@ def generate_random_mailbox():
     return prefix + "test"   # e.g. abcdtest
 
 
+# -------------------------------------------------------------
+#  BUILD EMAIL
+# -------------------------------------------------------------
 def build_email(first_name, last_name):
     # generate a random suffix
     suffix = generate_random_mailbox()   # e.g., abcdtest
@@ -116,6 +119,9 @@ def launch_hp_smart():
         return None
 
 
+# -------------------------------------------------------------
+#  FILL ACCOUNT FORM
+# -------------------------------------------------------------
 def fill_account_form(desktop, first_name, last_name, email_id):
     try:
         browser_win = desktop.window(title_re=".*HP account.*")
@@ -296,10 +302,5 @@ if __name__ == "__main__":
 
 
 def test_hp_account_automation():
-    """
-    Pytest wrapper – runs the full flow.
-    If you want pytest to fail when OTP is missing,
-    you can add explicit assertions here.
-    """
     main()
     assert True
